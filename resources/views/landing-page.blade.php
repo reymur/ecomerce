@@ -62,7 +62,7 @@
                 </p>
                 <div class="text-center button-container">
                     <a href="https://youtube.com" class="button">Featured</a>
-                    <a href="https://yandex.ru" class="button">On Sale</a>
+                    <a href="https://yandex.ru" target="_blank" class="button">On Sale</a>
                 </div>
 
                 <div class="products text-center">
