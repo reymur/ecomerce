@@ -61,7 +61,7 @@
                     temporibus!
                 </p>
                 <div class="text-center button-container">
-                    <a href="#" class="button">Featured</a>
+                    <a href="https://youtube.com" class="button">Featured</a>
                     <a href="#" class="button">On Sale</a>
                 </div>
 
