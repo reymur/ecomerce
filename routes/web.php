@@ -28,3 +28,8 @@ Route::get('/thankyou', 'ConfirmationController@index')->name('confirmation.inde
 Route::get('/cart/empty', function(){
     Cart::instance('saveForLater')->destroy();
 });
+
+
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
+});

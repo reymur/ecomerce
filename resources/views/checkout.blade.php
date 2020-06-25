@@ -154,7 +154,6 @@
                         Subtotal <br>
                         @if(session()->has('coupon'))
                             Discount ({{ session()->get('coupon')['name'] ?? '' }}):
-
                             <form action="{{ route('coupon.destroy') }}" method="post" style="display:inline">
                                 @csrf()
                                 @method('delete')

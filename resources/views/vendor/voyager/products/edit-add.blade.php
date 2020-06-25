@@ -53,7 +53,7 @@
                             @foreach($dataTypeRows as $row)
                                 <!-- GET THE DISPLAY OPTIONS -->
                                 @php
-                                    $options = json_decode($row->details);
+                                    $options = json_decode( json_encode($row->details), true );
                                     $display_options = isset($options->display) ? $options->display : NULL;
                                 @endphp
                                 @if ($options && isset($options->formfields_custom))
@@ -80,9 +80,11 @@
                                 <label>Categories</label>
 
                                 <ul style="list-style-type: none; padding-left: 0">
-                                @foreach ($allCategories as $category)
-                                    <li><label><input value="{{ $category->id }}" type="checkbox" name="category[]" style="margin-right: 5px;" {{ $categoriesForProduct->contains($category) ? 'checked' : '' }}>{{ $category->name }}</label></li>
-                                @endforeach
+                                @isset($allCategories)
+                                    @foreach ($allCategories as $category)
+                                        <li><label><input value="{{ $category->id }}" type="checkbox" name="category[]" style="margin-right: 5px;" {{ $categoriesForProduct->contains($category) ? 'checked' : '' }}>{{ $category->name }}</label></li>
+                                    @endforeach
+                                @endisset
                                 </ul>
                             </div> <!-- end form-group -->
 
