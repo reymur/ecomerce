@@ -21,24 +21,15 @@
         <header>
             <div class="top-nav container">
                 <div class="logo">CSS Grid Example</div>
-                <ul>
-                    <li><a href="{{ route('shop.index') }}">Shop</a>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Blog</a></li>
-                    <li>
-                        <a href="{{ route('cart.index') }}">
-                            Cart @if(Cart::instance('default')->count() > 0)
-                                     <span class="cart-count">{{ Cart::instance('default')->count() }}</span>
-                                 @endif
-                        </a>
-                    </li>
-                </ul>
+
+                {{ menu('main', 'partials.menus.main') }}
             </div> <!--end top nav-->
 
             <div class="hero container">
                 <div class="hero-copy">
                     <h1>CSS Grid Example</h1>
                     <p>CSS Grid Example practicals learn for me...</p>
+
                     <div class="hero-buttons">
                         <button class="button button-white">Button 1</button>
                         <button class="button button-white">Button 2</button>
