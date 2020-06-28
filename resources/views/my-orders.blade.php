@@ -73,7 +73,7 @@
                     <div class="order-products">
                         @foreach ($order->products as $product)
                             <div class="order-product-item">
-                                <div><img src="{{ asset($product->image) }}" alt="Product Image"></div>
+                                <div><img src="{{ productImage($product->image) }}" alt="Product Image"></div>
                                 <div>
                                     <div>
                                         <a href="{{ route('shop.show', $product->slug) }}">{{ $product->name }}</a>

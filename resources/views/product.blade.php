@@ -37,19 +37,21 @@
     <div class="product-section container">
         <div>
             <div class="product-section-image">
-                <img src="{{ asset('img/products/'.$product->slug.'.jpg') }}" alt="product" class="active" id="currentImage">
+                <img src="{{ productImage($product->image) }}" alt="product" class="active" id="currentImage">
             </div>
             <div class="product-section-images">
-                <div class="product-section-thumbnail selected">
-                    <img src="{{ asset('img/products/'.$product->slug.'.jpg') }}" alt="product">
-                </div>
 
-                @if ($product->images)
-                    @foreach (json_decode($product->images, true) as $image)
-                    <div class="product-section-thumbnail">
-                        <img src="{{ asset('img/products/'.$product->slug.'.jpg') }}" alt="product">
-                    </div>
+                @if($product->image && count(json_decode($product->images)) > 1)
+{{--                    {{ dd(json_decode($product->images)) }}--}}
+                    @foreach(json_decode($product->images) as $image)
+                        <div class="product-section-thumbnail selected">
+                            <img src="{{ productImage($image) }}" alt="product">
+                        </div>
                     @endforeach
+                @else
+                    <div class="product-section-thumbnail selected">
+                        <img src="{{ productImage($product->image) }}" alt="product">
+                    </div>
                 @endif
             </div>
         </div>
