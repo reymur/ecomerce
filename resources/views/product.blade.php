@@ -44,7 +44,7 @@
                     <img src="{{ productImage($product->image) }}" alt="product">
                 </div>
 
-                @if($product->image && count(json_decode($product->images)) > 1)
+                @if($product->image)
                     @foreach(json_decode($product->images) as $image)
                         <div class="product-section-thumbnail">
                             <img src="{{ productImage($image) }}" alt="product">
