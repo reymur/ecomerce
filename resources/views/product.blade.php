@@ -40,18 +40,16 @@
                 <img src="{{ productImage($product->image) }}" alt="product" class="active" id="currentImage">
             </div>
             <div class="product-section-images">
+                <div class="product-section-thumbnail selected">
+                    <img src="{{ productImage($product->image) }}" alt="product">
+                </div>
 
                 @if($product->image && count(json_decode($product->images)) > 1)
-{{--                    {{ dd(json_decode($product->images)) }}--}}
                     @foreach(json_decode($product->images) as $image)
-                        <div class="product-section-thumbnail selected">
+                        <div class="product-section-thumbnail">
                             <img src="{{ productImage($image) }}" alt="product">
                         </div>
                     @endforeach
-                @else
-                    <div class="product-section-thumbnail selected">
-                        <img src="{{ productImage($product->image) }}" alt="product">
-                    </div>
                 @endif
             </div>
         </div>
@@ -69,9 +67,9 @@
 
             <form action="{{ route('cart.store') }}" method="POST">
                 @csrf()
-                <input type="text" name="id" value="{{ $product->id }}">
-                <input type="text" name="name" value="{{ $product->name }}">
-                <input type="text" name="price" value="{{ $product->price }}">
+                <input type="hidden" name="id" value="{{ $product->id }}">
+                <input type="hidden" name="name" value="{{ $product->name }}">
+                <input type="hidden" name="price" value="{{ $product->price }}">
                 <button type="submit" class="button button-plain">Add to Cart</button>
             </form>
 
@@ -88,20 +86,20 @@
             const currentImage = document.querySelector('#currentImage');
             const images = document.querySelectorAll('.product-section-thumbnail');
 
-            images.forEach((element) => element.addEventListener('click', thumbnailClick));
+            images.forEach(event => event.addEventListener('click', thumbnailClick));
 
-            function thumbnailClick(e) {
+            function thumbnailClick(e){
                 currentImage.classList.remove('active');
 
                 currentImage.addEventListener('transitionend', () => {
                     currentImage.src = this.querySelector('img').src;
+                    console.log('transitionend');
                     currentImage.classList.add('active');
                 })
 
-                images.forEach((element) => element.classList.remove('selected'));
+                images.forEach(element => element.classList.remove('selected'));
                 this.classList.add('selected');
             }
-
         })();
     </script>
 
